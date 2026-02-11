@@ -1,0 +1,269 @@
+body.telemetry-body {
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top,#0b1d3a,#050b18);
+    color:white;
+    overflow-x:hidden;
+    overflow-y:auto;
+
+}
+
+.top-title {
+    text-align:center;
+    margin-top:20px;
+}
+
+.systems-panel .system {
+    padding:10px;
+    margin-bottom:10px;
+    border-left:4px solid #0f0;
+    background:#0c1629;
+}
+.system.warn { border-color:orange; }
+
+.gauges-panel {
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px;
+    justify-content:center;
+}
+
+.gauge svg { width:120px; }
+.circle-bg { fill:none; stroke:#1d2b4f; stroke-width:3; }
+.circle { fill:none; stroke:#00c6ff; stroke-width:3; stroke-linecap:round; }
+.gauge-value { fill:white; font-size:4px; text-anchor:middle; }
+.gauge-unit { fill:#aaa; font-size:3px; text-anchor:middle; }
+
+
+@keyframes floatShip {
+    50% { transform: translateY(-15px); }
+}
+
+.engine-glow{
+    position:absolute;
+    bottom:-10px;
+    left:50%;
+    transform:translateX(-50%);
+}
+@keyframes enginePulse {
+    50% { opacity:1; transform: scale(1.2); }
+}
+
+.telemetry-bar { margin-bottom:20px; }
+.bar {
+    height:6px;
+    background:#13264d;
+    border-radius:10px;
+    overflow:hidden;
+}
+.fill {
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#00c6ff,#0072ff);
+    box-shadow:0 0 10px #00c6ff;
+    transition:width 2s ease-out;
+}
+
+.ship-info { margin-top:30px; font-size:14px; }
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns: 260px 1fr 260px;
+    grid-template-areas:
+        "systems gauges metrics"
+        "ship ship ship"
+        "edit edit edit";
+    gap: 35px;
+    padding: 30px 40px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.ship-model{
+    width: 700px;
+    max-width: 100%;
+    animation: floatShip 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 45px #00eaff);
+    position: relative;
+    top: -300px;     
+    z-index: 10;
+}
+
+
+/* GRID AREAS */
+.systems-panel{ grid-area: systems; }
+.gauges-panel{
+    grid-area: gauges;
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+.telemetry-panel{ grid-area: metrics; }
+
+.ship-center{
+    grid-area: ship;
+    text-align:center;
+    padding: 20px 0 10px;
+    position: relative;
+    z-index: 5; /* por encima del fondo */
+}
+
+.ship-container{
+    position: relative;
+    display: inline-block;
+}
+
+.edit-panel{
+    grid-area: edit;
+    margin-top: -200px;   /* acerca el panel sin hueco gigante */
+    background: rgba(12,22,41,.75);
+    border-radius: 12px;
+    z-index: 20;   /* más alto que la nave */
+
+}
+
+
+@keyframes floatShip{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-30px); }
+}
+
+ /* Planetas decorativos */
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .planet-1 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            top: 10%;
+            left: 5%;
+            box-shadow: 0 0 60px rgba(102, 126, 234, 0.4);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .planet-2 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            bottom: 15%;
+            right: 10%;
+            box-shadow: 0 0 40px rgba(245, 87, 108, 0.4);
+            animation: float 15s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Estrellas */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+panel-title{
+    text-align:center;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
+
+.ship-info div{
+    margin-bottom:6px;
+    font-size:14px;
+    color:#9fb3c8;
+}
+
+.flag-row img{
+    vertical-align:middle;
+    margin-left:8px;
+    border-radius:3px;
+}
+
+.divider{
+    height:1px;
+    background:linear-gradient(90deg,transparent,#00eaff,transparent);
+    margin:18px 0;
+}
+
+.edit-form .form-group{
+    margin-bottom:14px;
+    display:flex;
+    flex-direction:column;
+}
+
+.edit-form label{
+    font-size:12px;
+    color:#6fbad1;
+    margin-bottom:4px;
+}
+
+.edit-form input,
+.edit-form select{
+    padding:8px 10px;
+    border-radius:6px;
+    border:1px solid #1e3a56;
+    background:#0f1c2f;
+    color:#e6f7ff;
+}
+
+.form-row{
+    display:flex;
+    gap:12px;
+}
+
+.btn-save{
+    margin-top:10px;
+    padding:10px;
+    width:100%;
+    background:#00eaff;
+    color:#001019;
+    font-weight:bold;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-save:hover{
+    box-shadow:0 0 15px #00eaff;
+}
+
+.toast{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 12px 18px;
+    border-radius: 6px;
+    background: #222;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: .3s;
+    z-index: 9999;
+    font-size: 14px;
+}
+.toast.show{ opacity:1; transform:translateY(0); }
+.toast.success{ background:#0f5132; }
+.toast.error{ background:#842029; }
