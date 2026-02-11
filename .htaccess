@@ -1,0 +1,10 @@
+ErrorDocument 403 /errors/error403.html
+
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(index\.php|robots|assets\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]
+
